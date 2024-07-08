@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Regression Pairs Trading System - Tanush M M</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css"
+    />
+    <style>
+      /* General styles */
+      body {
+        background-color: #adc4ce;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 2400px;
+        margin-top: 20px;
+      }
+      .table-container {
+        background-color: #96b6c5;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px #171e25;
+        width: 100%;
+        overflow-x: auto;
+        animation: fadeIn 1s ease-in-out;
+      }
+      h1,
+      h2 {
+        color: #153448;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 18px;
+        color: #153448; /* Text color */
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #171e25;
+      }
+      td {
+        color: #153448;
+        transition: background-color 0.3s ease;
+      }
+      th {
+        background-color: #7c9ba9;
+      }
+      td button {
+        background-color: #4f709c;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+      td button:hover {
+        background-color: #213555;
+      }
+      .dataTables_filter input[type="search"] {
+        background-color: #96b6c5;
+        color: #153448;
+        border: 1px solid #171e25;
+        border-radius: 4px;
+        padding: 6px;
+      }
+      .dataTables_length label,
+      .dataTables_filter label {
+        color: #153448;
+      }
+      .dataTables_info,
+      .dataTables_paginate {
+        color: #153448;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="heading">Linear Regression Pairs Trading System - Tanush M M</h1>
+    <h1>Logged in as <b>{{ email }}</b></h1>
+    <h1>
+      Show Chart option is still in development. Sorry for the inconvenience
+    </h1>
+    <div class="container">
+      <div class="table-container">
+        <h2>Data Table</h2>
+        {{ options }}
+        {% if rows > 0 %}
+        <table id="dataTable" class="display row-border cell-border hover">
+          <thead>
+            <tr>
+              <th>Serial No.</th>
+              <th>Stock Y</th>
+              <th>Stock X</th>
+              <th>Slope/Beta</th>
+              <th>Intercept</th>
+              <th>Standard Error of Intercept</th>
+              <th>ADF P-Value</th>
+              <th>Z-Score (Today's Residual / Standard Error)</th>
+              <th>Current Day Residual</th>
+              <th>Standard Error (Std. Dev. of Residual)</th>
+              <th>Show Chart</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in range(rows) %}
+            <tr>
+              <td>{{ stat_data.iloc[i][0] }}</td>
+              <td>{{ stat_data.iloc[i][1] }}</td>
+              <td>{{ stat_data.iloc[i][2] }}</td>
+              <td>{{ stat_data.iloc[i][3] }}</td>
+              <td>{{ stat_data.iloc[i][4] }}</td>
+              <td>{{ stat_data.iloc[i][5] }}</td>
+              <td>{{ stat_data.iloc[i][6] }}</td>
+              <td>{{ stat_data.iloc[i][7] }}</td>
+              <td>{{ stat_data.iloc[i][8] }}</td>
+              <td>{{ stat_data.iloc[i][9] }}</td>
+              <td>
+                <a href="https://www.youtube.com" target="_blank"
+                  ><button type="button">Click Me</button></a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+    </div>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#dataTable").DataTable()
+      })
+    </script>
+  </body>
+</html>

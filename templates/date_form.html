@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Regression Pairs Trading System - Tanush M M</title>
+    <style>
+      body {
+        background-color: #adc4ce;
+        color: #153448;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding-top: 50px;
+        animation: fadeIn 1s ease-in-out;
+      }
+      .heading {
+        margin-bottom: 20px;
+        text-align: center;
+        animation: fadeInDown 1s ease-in-out;
+      }
+      .form-container {
+        background-color: #96b6c5;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        width: 600px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        animation: fadeInUp 1s ease-in-out;
+      }
+      .form-container h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        animation: fadeIn 1.2s ease-in-out;
+      }
+      .form-container form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      .form-container label {
+        display: block;
+        margin-bottom: 8px;
+        width: 100%;
+      }
+      .form-container input[type="date"] {
+        width: 80%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #adc4ce;
+        color: #13354b;
+        animation: zoomIn 1.6s ease-in-out;
+      }
+      .form-container input[type="submit"] {
+        width: 80%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #4f709c;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 16px;
+        animation: zoomIn 1.8s ease-in-out;
+      }
+      .form-container input[type="submit"]:hover {
+        background-color: #213555;
+      }
+      .parsed-url {
+        margin-top: 20px;
+        text-align: center;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heading">
+      <h1>Linear Regression Pairs Trading System - Tanush M M</h1>
+      <h1>Logged in as <b>{{ email }}</b></h1>
+    </div>
+    <div class="form-container">
+      <form action="/indices" method="post">
+        <h2>Enter the Dates</h2>
+        <label for="fromdate">From Date:</label>
+        <input
+          type="date"
+          id="fromdate"
+          name="fromdate"
+          required
+          min="2019-01-01"
+        />
+
+        <label for="todate">To Date:</label>
+        <input type="date" id="todate" name="todate" required />
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>
